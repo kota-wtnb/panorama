@@ -27,11 +27,13 @@ gulp.task('browser-sync', () => {
 });
 
 gulp.task("sass", () => {
-  gulp.src("./sass/**/*.scss")
+  gulp.src("./sass/style.scss")
     .pipe(plumber({
       errorHandler: notify.onError("Error: <%= error.message %>")
     }))
-    .pipe(sass())
+    .pipe(sass({
+      includePaths: require('node-reset-scss').includePath
+    }))
     .pipe(gulp.dest("./css"))
     .pipe(browserSync.stream())
 });

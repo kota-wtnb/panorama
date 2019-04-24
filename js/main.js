@@ -27,7 +27,8 @@
     var material = new THREE.MeshBasicMaterial({
       // 画像をテクスチャーとして読み込み
       map: loader.load(
-        "https://watkot.github.io/panorama/img/sample.JPG"
+        // "https://watkot.github.io/panorama/img/sample.JPG"
+        "../img/sample.JPG"
       )
     });
 
