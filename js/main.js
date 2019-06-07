@@ -114,7 +114,7 @@ function addPulldownMenu() {
   var menu = document.createElement("select");
   document.getElementById("menubar").appendChild(menu);
 
-  var array = ["りんご", "みかん"];
+  var array = ["りんご", "なし"];
   for(var i = 0; i < array.length; i++){
     var option = document.createElement("option");
     option.textContent = array[i];
