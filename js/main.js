@@ -4,7 +4,7 @@
   var height = window.innerHeight;
 
   var element;
-  var scene, camera, renderer, controls, texture;
+  var scene, camera, renderer, controls, sphere;
 
   function init() {
     scene = new THREE.Scene();
@@ -27,8 +27,8 @@
     var material = new THREE.MeshBasicMaterial({
       // 画像をテクスチャーとして読み込み
       map: loader.load(
-        "https://watkot.github.io/panorama/img/sample.JPG"
-        //"../img/sample.JPG"
+        //"https://watkot.github.io/panorama/img/sample.JPG"
+        "../img/aerial.PNG"
       )
     });
 
@@ -83,9 +83,9 @@
     // 視点変更の速さ
     controls.rotateSpeed = 0.1;
     // ズーム禁止
-    controls.noZoom = true;
+    controls.enableZoom = false;
     // パン操作禁止
-    controls.noPan = true;
+    controls.enablePan = false;
   }
 
   // ジャイロセンサーで視点操作する
@@ -108,3 +108,42 @@
 
   window.addEventListener("load", init, false);
 })();
+
+// pull-down menu
+function addPulldownMenu() {
+  var menu = document.createElement("select");
+  document.getElementById("menubar").appendChild(menu);
+
+  var array = ["りんご", "みかん"];
+  for(var i = 0; i < array.length; i++){
+    var option = document.createElement("option");
+    option.textContent = array[i];
+    menu.appendChild(option);
+  }
+}
+
+addPulldownMenu();
+
+// Cesium
+
+/*
+var viewer;
+
+function loadCesium() {
+  'use strict';
+
+  viewer = new Cesium.Viewer("cesiumContainer", {
+    imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
+			url: '//server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer',
+			enablePickFeatures: false
+		}),
+    timeline: false,
+    animation: false,
+    homeButton: false,
+    sceneModePicker: false,
+    baseLayerPicker: false,
+    navigationHelpButton: false,
+    geocoder: false,
+    terrainExaggeration: 1.0
+});
+*/
