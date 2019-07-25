@@ -28,7 +28,7 @@
       // 画像をテクスチャーとして読み込み
       map: loader.load(
         //"https://watkot.github.io/panorama/img/sample.JPG"
-        "../img/aerial.PNG"
+        "../img/sample.JPG"
       )
     });
 
@@ -107,43 +107,13 @@
   }
 
   window.addEventListener("load", init, false);
-})();
 
-// pull-down menu
-function addPulldownMenu() {
-  var menu = document.createElement("select");
-  document.getElementById("menubar").appendChild(menu);
-
-  var array = ["りんご", "なし"];
-  for(var i = 0; i < array.length; i++){
-    var option = document.createElement("option");
-    option.textContent = array[i];
-    menu.appendChild(option);
+  window.onresize = function() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height);
+    render();
   }
-}
-
-addPulldownMenu();
-
-// Cesium
-
-/*
-var viewer;
-
-function loadCesium() {
-  'use strict';
-
-  viewer = new Cesium.Viewer("cesiumContainer", {
-    imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
-			url: '//server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer',
-			enablePickFeatures: false
-		}),
-    timeline: false,
-    animation: false,
-    homeButton: false,
-    sceneModePicker: false,
-    baseLayerPicker: false,
-    navigationHelpButton: false,
-    geocoder: false,
-    terrainExaggeration: 1.0
-});
-*/
+})();
