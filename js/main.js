@@ -6,6 +6,8 @@
   var element;
   var scene, camera, renderer, controls, sphere;
 
+  document.body.appendChild(WEBVR.createButton(renderer));
+
   function init() {
     scene = new THREE.Scene();
     // カメラの作成
@@ -45,6 +47,8 @@
     element = renderer.domElement;
     document.getElementById("stage").appendChild(element);
     renderer.render(scene, camera);
+
+    renderer.vr.enabled = true;
 
     // デバイスの判別
     var isAndroid = false;
